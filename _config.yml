@@ -1,6 +1,6 @@
-title: 我的博客
-description: 记录所思所想
-url: "https://YOUR_GITHUB_USERNAME.github.io"
+title: Ximing的博客
+description: (标题的描述)
+url: "https://MaiXiming.github.io"
 baseurl: ""
 
 locale: zh-CN
@@ -19,15 +19,15 @@ plugins:
 
 # 站点作者信息（会显示在文章页侧栏等）
 author:
-  name: 你的名字
+  name: Ximing Mai
   avatar: /assets/img/avatar.png
   bio: 简短的自我介绍（可在“关于我”页详细介绍）
-  location: 地理位置（可选）
+  location: 上海
 
 # 社交账号（按需填写）
 # social:
 #   links:
-#     - "https://github.com/YOUR_GITHUB_USERNAME"
+#     - "https://github.com/MaiXiming"
 
 # 顶部导航使用 _data/navigation.yml
 # 如需启用站内搜索，可设为 true（Minimal Mistakes 自带本地搜索）
@@ -37,13 +37,13 @@ search: true
 permalink: /:categories/:title/
 
 # GitHub 仓库（用于主题的一些链接渲染）
-repository: YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME.github.io
+repository: MaiXiming/MaiXiming.github.io
 
 # 评论系统（可选：giscus 示例，后续步骤里会教你如何启用）
 # comments:
 #   provider: "giscus"
 #   giscus:
-#     repo: "YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME.github.io"
+#     repo: "MaiXiming/MaiXiming.github.io"
 #     repo_id: ""
 #     category: "Announcements"
 #     category_id: ""
