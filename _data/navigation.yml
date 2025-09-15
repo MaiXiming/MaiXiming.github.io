@@ -1,0 +1,11 @@
+main:
+  - title: "首页"
+    url: /
+  - title: "AI论文"
+    url: /categories/ai/
+  - title: "BCI"
+    url: /categories/bci/
+  - title: "关于我"
+    url: /about/
+  - title: "联系我"
+    url: /contact/

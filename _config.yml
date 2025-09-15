@@ -1,0 +1,54 @@
+title: 我的博客
+description: 记录所思所想
+url: "https://YOUR_GITHUB_USERNAME.github.io"
+baseurl: ""
+
+locale: zh-CN
+timezone: Asia/Shanghai
+
+# Minimal Mistakes 主题（通过 remote_theme 使用）
+theme: null
+remote_theme: "mmistakes/minimal-mistakes@4.26.1"
+minimal_mistakes_skin: "default"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 站点作者信息（会显示在文章页侧栏等）
+author:
+  name: 你的名字
+  avatar: /assets/img/avatar.png
+  bio: 简短的自我介绍（可在“关于我”页详细介绍）
+  location: 地理位置（可选）
+
+# 社交账号（按需填写）
+# social:
+#   links:
+#     - "https://github.com/YOUR_GITHUB_USERNAME"
+
+# 顶部导航使用 _data/navigation.yml
+# 如需启用站内搜索，可设为 true（Minimal Mistakes 自带本地搜索）
+search: true
+
+# 文章固定链接格式（可按需修改）
+permalink: /:categories/:title/
+
+# GitHub 仓库（用于主题的一些链接渲染）
+repository: YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME.github.io
+
+# 评论系统（可选：giscus 示例，后续步骤里会教你如何启用）
+# comments:
+#   provider: "giscus"
+#   giscus:
+#     repo: "YOUR_GITHUB_USERNAME/YOUR_GITHUB_USERNAME.github.io"
+#     repo_id: ""
+#     category: "Announcements"
+#     category_id: ""
+#     mapping: "pathname"
+#     reactions_enabled: "1"
+#     emit_metadata: "0"
+#     input_position: "bottom"
+#     theme: "light"
+#     lang: "zh-CN"
