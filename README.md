@@ -6,6 +6,16 @@
 - 页面：关于我、联系我
 - 示例文章：各 1 篇
 
+## 文件简介
+- `_data/navigation.yml`: 设置上方导航栏内容
+- `_posts/`: 博客集合.md （格式：YYYY-MM-DD-标题.md）
+- `assets/`: 图片存放
+- `categories`: 每个栏目的显示设置，`_data/navigation.yml`会读取
+- `/_config.yml`: 基于Jekyll的博客配置
+- `about.md`: 个人信息
+- `contact.md`: 联系方式
+- `index.md`: 首页设置
+
 ## 使用方式
 1. 在 GitHub 创建名为 `YOUR_GITHUB_USERNAME.github.io` 的公开仓库。
 2. 将本仓库所有文件上传（或用 `git` 推送）。
