@@ -15,6 +15,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-include-cache
 
 # 站点作者信息（会显示在文章页侧栏等）
 author:
