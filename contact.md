@@ -5,7 +5,7 @@ permalink: /contact/
 author_profile: true
 ---
 
-- 邮箱：maiximing7@hotmail.com
+- 邮箱：maiximing97@hotmail.com
 <!-- - 推特/微博：链接（可选）   -->
 <!-- - 领英：链接（可选） -->
 
