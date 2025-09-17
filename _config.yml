@@ -45,8 +45,8 @@ comments:
   giscus:
     repo: "MaiXiming/MaiXiming.github.io"   # 仓库名
     repo_id: "R_kgDOPwCP5g"                   # Giscus生成
-    category: "Announcements"                     # Discussions分类名
-    category_id: "DIC_kwDOPwCP5s4CvifV"             # Giscus生成
+    category: "Comments"                     # Discussions分类名
+    category_id: "DIC_kwDOPwCP5s4Cvif5"             # Giscus生成
     mapping: "pathname"                      # 文章映射方式
     reactions_enabled: "1"                   # 开启表情反馈
     emit_metadata: "0"
