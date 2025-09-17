@@ -4,7 +4,7 @@ title: "博客创建记录"
 date: 2025-09-17 12:00:00 +0800
 categories: [personal]
 comments: true
-tags: []
+tags: [blog]
 toc: true
 ---
 
