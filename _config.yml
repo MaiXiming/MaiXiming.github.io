@@ -40,6 +40,36 @@ permalink: /:categories/:title/
 repository: MaiXiming/MaiXiming.github.io
 
 # 评论系统（可选：giscus 示例，后续步骤里会教你如何启用）
+comments:
+  provider: "giscus"
+  giscus:
+    repo: "MaiXiming/MaiXiming.github.io"   # 仓库名
+    repo_id: "R_kgDOPwCP5g"                   # Giscus生成
+    category: "Announcements"                     # Discussions分类名
+    category_id: "DIC_kwDOPwCP5s4CvifV"             # Giscus生成
+    mapping: "pathname"                      # 文章映射方式
+    reactions_enabled: "1"                   # 开启表情反馈
+    emit_metadata: "0"
+    input_position: "bottom"                 # 评论框位置 bottom / top
+    theme: "preferred_color_scheme"
+    lang: "zh-CN"
+
+# giscus:
+# <script src="https://giscus.app/client.js"
+#         data-repo="MaiXiming/MaiXiming.github.io"
+#         data-repo-id="R_kgDOPwCP5g"
+#         data-category="Announcements"
+#         data-category-id="DIC_kwDOPwCP5s4CvifV"
+#         data-mapping="pathname"
+#         data-strict="0"
+#         data-reactions-enabled="1"
+#         data-emit-metadata="0"
+#         data-input-position="bottom"
+#         data-theme="preferred_color_scheme"
+#         data-lang="zh-CN"
+#         crossorigin="anonymous"
+#         async>
+# </script>
 # comments:
 #   provider: "giscus"
 #   giscus:
