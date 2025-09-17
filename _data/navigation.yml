@@ -1,10 +1,12 @@
 main:
   - title: "首页"
     url: /
-  - title: "AI论文"
+  - title: "DL(AI)"
     url: /categories/ai/
   - title: "BCI"
     url: /categories/bci/
+  - title: "个人"
+    url: /categories/personal/
   - title: "关于我"
     url: /about/
   - title: "联系我"
