@@ -10,7 +10,8 @@ toc: true
 
 ## 系统命令
 
-### 删除rm
+### 删除 rm
+
 | 命令 | 解释 | 备注 |
 | --- | --- | --- |
 | `rm file` | 删除文件 |
@@ -24,6 +25,7 @@ toc: true
 | `trash-put file.txt` | trash-cli工具包 | `trash-put trash-list trash-empty` |  
 
 ### df / du / ls 
+
 | 命令 | 解释 | 备注 |
 | --- | --- | --- |
 | `df -h` | 查看所有挂载点的使用情况（磁盘空间与每个分区的大小） |  |
@@ -32,6 +34,7 @@ toc: true
 ## 工具
 
 ### tmux
+
 | 命令 | 解释 | 备注 |
 | --- | --- | --- |
 | `tmux ls` | 显示可选窗口 |  |
