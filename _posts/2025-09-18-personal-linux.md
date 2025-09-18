@@ -9,6 +9,7 @@ toc: true
 ---
 
 ## 系统命令
+
 ### 删除rm
 | 命令 | 解释 | 备注 |
 | --- | --- | --- |
@@ -21,6 +22,12 @@ toc: true
 | `rm *.log` | 通配符，所有.log文件 |  |
 | `rm tmp*` | tmp开头的所有文件 |  |
 | `trash-put file.txt` | trash-cli工具包 | `trash-put trash-list trash-empty` |  
+
+### df / du / ls 
+| 命令 | 解释 | 备注 |
+| --- | --- | --- |
+| `df -h` | 查看所有挂载点的使用情况（磁盘空间与每个分区的大小） |  |
+
 
 ## 工具
 
