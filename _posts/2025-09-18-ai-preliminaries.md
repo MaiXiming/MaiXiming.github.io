@@ -144,7 +144,7 @@ python中，虽然向量在数学上是列向量，但是表示依然为一个�
 
 深度学习的优化问题，目标函数一般就用范数来表示。即将张量数据样本，表达为一个标量，从而可以比较大小，然后希望目标尽可能小。
 
-- L2范数：`torch.norm(x)`元素平方和的平方根，深度学习最常见，一般||x||默认等同于||x||2.
+- L2范数：`torch.norm(x)`元素平方和的平方根，深度学习最常见，一般``||x||``默认等同于``||x||2``.
 
 - L1范数：`torch.abs(x).sum()`元素绝对值的和。
 
@@ -154,9 +154,63 @@ python中，虽然向量在数学上是列向量，但是表示依然为一个�
     - 官方更推荐`torch.linalg.norm(A)`，`torch.norm`被弃用了。
     - 指定p：`torch.linalg.norm(A, ord=k)`
     - 每个batch计算范数：`torch.linalg.norm(A, dim=(1,2))`。
-    
 
+## 微积分
 
+[不太记得可回看详情，下面只是关键点的总结，不如看一遍清晰](https://zh.d2l.ai/chapter_preliminaries/calculus.html)
+- 微分对深度学习来说很重要
+- 导数是一元函数`y=f(x)`，x的瞬时变化率
+- 偏导数是多元函数`f(x1, x2, ..., xn)`，f对xi的瞬时变化率`D_xi = partial(f) / partial(xi)`
+- 梯度 = 偏导数组成的向量 = `[D_x1, D_x2, ..., D_xn]`
+- 链式法则用于处理复合函数composite，因为深度学习中一层一层堆叠就是一层复合一层
+- 深度学习拟合的函数就是`[y1=f1(x1,x2,...,xn), y2=f2(x1,x2,...,xn), ..., ym=fm(x1,x2,...,xn)]`
+![多元函数的链式法则](/assets/img/ai/gradient_composite.png)
+
+疑问：
+- 梯度小节中，定义的函数f(x)是标量，但是规则中的f(x)是矢量。当然矢量函数的求导是矩阵没问题，但是这还符合梯度的定义吗？还是说矢量函数的求导又有一个新名字（以前学过，忘了）
+![矢量求导](/assets/img/ai/gradient_vector_gradient.png)
+
+## 自动微分 autograd
+- 深度学习框架可以自动计算导数，通过构建计算图 computational graph的方式，来追踪计算，从而可以实现反向传播梯度（具体细节没细究）
+- 当y是张量而非标量时，梯度就是高阶张量。但是不需要细究，因为深度学习的损失函数是标量，意味着y肯定是标量。
+- 自动微分的好处是，即使是用控制流 (if/while/for/任意函数),依然可以追踪变量。
+- 如果连续执行两次y.backward()，不会报错，而是将梯度信息积累到x.grad，所以两次的x.grad值不一样
+- **y.backward()要求y必须是标量**，求出的是x的梯度x.grad。但是这**可以巧妙地用来一下求出一个函数的导数函数**，例如练习5.`y = sin(x); y.sum().backward(); x.grad` x.grad就是不同x处的导数值，因为可以将向量x看作x1-xn，sum()后求梯度就是求x1-xn各自的偏导数，对应的就是不同x取值处的导数了。
+
+```
+## 案例
+x = torch.arange(4.0)
+x.requires_grad_(True) # == x = torch.arange(4.0, requires_grad_=True)
+x.grad # default None
+y = 2 * torch.dot(x, x)
+y.backward()
+x.grad # tensor([0, 4, 8, 12])
+
+## 新函数的梯度计算
+x.grad.zero_() # 默认积累梯度，所以计算新的梯度前需要清除之前的值
+y = x.sum()
+y.backward()
+x.grad
+
+## 分离计算
+x.grad.zero_()
+y = x * x
+u = y.detach() # 作为常数处理，梯度不会向后经u传到x
+z = u * x
+z.sum().backward()
+x.grad == u # True
+
+```
+
+## 概率 probability
+[不太记得可回看详情，下面只是关键点的总结，不如看一遍清晰](https://zh.d2l.ai/chapter_preliminaries/probability.html)（连续随机变量可见[链接](https://d2l.ai/chapter_appendix-mathematics-for-deep-learning/random-variables.html)）
+- 机器学习就是根据概率做出预测
+- 概率本身是一个很直观的概念，并不难体会，因为概率度量了**(不)确定性水平**
+- 但是因为世界的分布很复杂，过程也很复杂，所以将概率公理化数学化，然后就可以用公理和推理来计算复杂的过程（比如HIV检测这种反直觉的事情）
+- 分布理解为对事件的概率分配。
+- `matrix.cumsum(dim=0)`可以用来计算数据集矩阵随着时间/行的推移的总和；`matrix/cumsum(dim=0)/matrix.cumsum(dim=0).sum(dim=1, keppdims=True)`来计算随着时间推移，不同列的特征占全体的比例/概率。
+- 离散随机变量很好理解；连续随机变量从密度来理解，任何一点的重量/概率都是0，但是其密度反映了一个小区间下的重量/概率。
+- 独立性更多理解为一个可以利用的条件，比如“因为A和B独立，所以P(A|B)=P(A), P(AB)=P(A)*P(B)”.**若A和B独立，P(A|B, C) = P(A|C)，B可以直接去掉**
 
 
 
@@ -170,3 +224,8 @@ python中，虽然向量在数学上是列向量，但是表示依然为一个�
 
 （Jupyter中）`list?`显示帮助文档；`list??`显示实现函数的python代码
 
+## d2l好用的工具
+
+plot
+- x为向量，y可以是列表，列表元素为f1(x), f2(x), etc.
+- 完整：`plot(X, Y=None, xlabel=None, ylabel=None, legend=None, xlim=None, ylim=None, xscale='linear', yscale='linear', fmts=('-', 'm--', 'g-.', 'r:'), figsize=(3.5, 2.5), axes=None)`
