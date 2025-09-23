@@ -7,7 +7,9 @@ main:
     url: /categories/bci/
   - title: "个人"
     url: /categories/personal/
+  - title: "出去玩"
+    url: /categories/travel/
   - title: "关于我"
     url: /about/
-  - title: "联系我"
-    url: /contact/
+  # - title: "联系我"
+  #   url: /contact/
