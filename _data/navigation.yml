@@ -3,7 +3,7 @@ main:
     url: /
   - title: "AI"
     url: /categories/ai/
-    - title: "实践"
+  - title: "实践"
     url: /categories/practice/
   - title: "BCI"
     url: /categories/bci/
