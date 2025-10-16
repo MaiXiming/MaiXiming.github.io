@@ -24,6 +24,8 @@ pytorch使用tensor定义张量，和numpy的ndarray很像，但是支持GPU计�
 
 `x = torch.randn((3, 4))`: 正态分布随机采样
 
+`x = torch.normal(0, 1, (a, b, c))` 指定正态分布参数，生成(a,b,c)shape的张量
+
 `x = torch.tensor([[2,1,4,3], [1,2,3,4,],[4,3,2,1]])`: 通过python list创建
 
 
@@ -48,11 +50,14 @@ pytorch使用tensor定义张量，和numpy的ndarray很像，但是支持GPU计�
 
 `X[0:2, :] = 12`: 索引的元素都赋值为相同元素值
 
+`X[indices]`: indices可以是列表[int], 列表[float](整数.0)，torch.tensor(dtype=torch.int)，但不能是torch.tensor(dtype=torch.float32)即使.0
+
 
 
 ### 张量操作
 
 `X = x.reshape(3, 4)`: 改变张量形状
+
 `Z = torch.cat((X, Y), dim=0)`: 连结。dim是要改变的轴/维度，-1代表最后一个维度。
 
 ### 运算
@@ -74,6 +79,9 @@ b = torch.arange(3).reshape((1, 2))
 a + b # torch.Size([3, 2])
 ```
 
+防止broadcast的情况：比如y/y_hat都是(n,)，`y_hat - y`希望得到`(n,)`的张量，但是因为`y.shape=(1, n), y_hat.shape=(n, 1)`，由于广播机制，输出为(n, n)
+- 解决方法：已知y_hat/y.numel()总元素相同的情况下，强制转换形状`y_hat = y_hat.reshape(y.shape); (y_hat - y)`
+
 ### 张量内存分配
 `Y = X + Y` 会为Y分配一个新的内存，可以用`id(Y)`获取元素内存地址。
 
@@ -87,6 +95,9 @@ torch2numpy: `A = X.numpy()`
 numpy2torch: `B = torch.tensor(A)`
 
 to python标量：`a.item(); float(a); int(a)`
+
+### torch.func vs tensor.func
+
 
 ## pandas: 待学习
 
@@ -138,6 +149,11 @@ python中，虽然向量在数学上是列向量，但是表示依然为一个�
 
 - 矩阵A-矩阵B乘法：`torch.mm(A, B)`
     - 矩阵A每行为向量；矩阵b每列为向量；对b的每一列，进行Ax的mv，然后列`cat(, dim=1)`
+    - 只能用于矩阵A/B都是二维矩阵的情况
+
+- 通用矩阵乘法：`torch.matmul(A, B)`
+    - 不限制A/B维度，只要符合矩阵乘法规则
+    - 可以代替torch.mv / torch.mm，不过mv/mm语义更加明确
 
 ### 范数
 范数表示一个向量有多大，即将向量转为标量，从而可以将不同向量之间进行比较。
