@@ -3,6 +3,8 @@ main:
     url: /
   - title: "AI"
     url: /categories/ai/
+  - title: "Embodied AI"
+    url: /categories/Embodied/
   - title: "实践"
     url: /categories/practice/
   - title: "BCI"
