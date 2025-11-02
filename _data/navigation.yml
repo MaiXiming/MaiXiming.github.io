@@ -3,6 +3,8 @@ main:
     url: /
   - title: "AI"
     url: /categories/ai/
+  - title: "日志"
+    url: /categories/logs/
   - title: "Embodied AI"
     url: /categories/Embodied/
   - title: "实践"
