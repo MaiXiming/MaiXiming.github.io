@@ -6,7 +6,7 @@ main:
   - title: "日志"
     url: /categories/logs/
   - title: "Embodied AI"
-    url: /categories/Embodied/
+    url: /categories/embodied/
   - title: "实践"
     url: /categories/practice/
   - title: "BCI"
