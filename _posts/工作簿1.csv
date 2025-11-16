@@ -1,0 +1,18 @@
+﻿BaseTask,,
+函数名/代码块,函数实现功能与输入/输出,函数内容详解
+"`__init__(self, cfg, ...)`","初始化实例，包括创建环境和buffer
+输入：cfg - 环境配置类; sim_params等
+输出：无","创建`self.gym`使用isaacgym api <br> `self.xxx = cfg.subclass.xxx`将环境配置类定义的参数转为实例的属性 <br> 初始化各种buffers `self.obs_buf, self.rew_buf, self.episode_length_buf` <br> 创建仿真环境`self.crate_sim()`，并创建环境对象`self.sim`； <br> 设置观测相机`self.viewer`"
+`self.create_sim()`,创建环境,无，在继承类`LeggedRobot`中定义
+`get_observations(self)`,"返回`self.obs_buf`
+输入：无
+输出: self.obs_buf - tensor，由`__init__`创建，由继承类LeggedRobot `compute_observations()`更新",/
+`get_priviledged_observations(self)`,"返回`self.priviledged_obs_buf`
+输入：无
+输出: self.priviledged_obs_buf - tensor，由`__init__`创建，由继承类LeggedRobot `compute_observations()`更新",/
+"`reset_idx(self, env_ids)`","将env中的robot重置状态
+输入/输出：无",无，在继承类中定义
+`reset(self)`,"重置所有robot
+输入：无 
+输出：obs, priviledged_obs","调用`self.reset_idx()`，并且`self.step(actions=0)`
+不知道为啥要多个step?"
