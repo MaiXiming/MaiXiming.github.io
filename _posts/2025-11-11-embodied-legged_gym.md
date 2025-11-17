@@ -84,18 +84,32 @@ toc: true
 #### `LeggedRobotCfg` (`legged_robot_config.py`)
 
 | 函数名/代码块 | 函数实现功能与输入/输出 | 函数内容详解 |
-| :--- | :--- | :--- | 
 | --- | --- | --- |
-| --- | --- | --- |
-| --- | --- | --- |
+| `class env` | 定义环境基础参数 | num_envs, num_observations, num_actions等 |
+| `class terrain` | 定义地形 | mesh_type='trimesh' or `plane` or 'none` |
+| `class commands` | 控制指令相关 | num_commands控制指令数，resampling_time控制指令改变周期，ranges指令的范围 |
+| `class init_state` | 机器人初始位姿 |  |
+| `class control` | PID相关 | P=stiffness; D=damping;<br>action_scale表示将输出关节角度会乘以一个比例（作用是平滑，但是原理没懂？）<br>decimation: 仿真环境时间dt * decimation = 控制指令下发时间周期 |
+| `class asset` | 机器人资产（模型） |  |
+| `class domain_rand` | 域随机化定义 | 用于添加机器人环境中的扰动，模拟真实世界中的随机扰动，加强机器人的稳定性和鲁棒性 |
+| `class rewards` | 奖励函数定义 | `class scales`每一项都对应一个reward函数，函数return * scale = reward value |
+| `class normalization` | 归一化 | class obs_scales定义obs的归一化参数（目的是让模型输入维度一致，稳定训练）<br>clip_xxx则是限定数值范围[-clip, clip] |
+| `class noise` | 添加噪声 |  |
+| `class viewer` | 摄像头视角 |  |
+| `class sim` | 仿真环境参数定义 | dt 时间<br>up_axis = 1,0代表y，1代表z（机器人默认是z） |
 
 #### `LeggedRobotCfgPPO` (`legged_robot_config.py`)
 
 | 函数名/代码块 | 函数实现功能与输入/输出 | 函数内容详解 |
-| :--- | :--- | :--- | 
 | --- | --- | --- |
-| --- | --- | --- |
-| --- | --- | --- |
+| `seed = 1` | 随机种子 |  |
+| `runner_class_name = 'OnPolicyRunner` | 算法类名称 | 后续用eval(name)来得到类名var, 然后var()实例化<br>详见`rsl_rl/runners/on_policy_runner.py`, 定义了整个算法训练过程、log、保存等的类 |
+| `class policy` | 定义神经网络模型参数 | init_noise_std: 参数初始化std<br>hidden_dims： MLP维度<br>activation: 激活函数 |
+| `class algorithm` | 训练网络参数 | learning_rate, num_learning_epochs, num_mini_batches等，具体要结合看PPO算法 |
+| `class runner` | 运行过程的参数定义 | max_iterations, save_interval, load_run, checkpoint等<br>policy_class_name=PPO， algorithm_class_name=ActorCritic |
+| 算法之间的关系 |  | OnPolicyRunner定义了整个训练过程，包含learn, log, save等过程<br>PPO为训练模型的一种方法<br>ActorCritic应该是强化学习方法 |
+
+
 
 #### `LeggedRobot` (`legged_robot.py`)
 
@@ -113,6 +127,12 @@ toc: true
 | --- | --- | --- |
 | --- | --- | --- |
 
+
+| 函数名/代码块 | 函数实现功能与输入/输出 | 函数内容详解 |
+| :--- | :--- | :--- | 
+| --- | --- | --- |
+| --- | --- | --- |
+| --- | --- | --- |
 
 ### 测试过程机制`play.py`
 
